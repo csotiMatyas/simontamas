@@ -2,7 +2,6 @@ import styled, { keyframes, css } from "styled-components";
 import { Menu } from "./Navigation";
 
 interface IMenuRows {
-  open: boolean;
   menu: Menu;
 }
 
@@ -18,39 +17,48 @@ export const NavStyle = styled.nav`
 const MenuRows = styled.div<IMenuRows>`
   width: 40px;
   height: 3px;
-  background-color: white;
   border-radius: 1px;
   transform-origin: left;
+  background-color: ${(props) =>
+    props.menu === "opened" ? "var(--theme-primary)" : "white"};
 `;
 
 export const MenuStyleTop = styled(MenuRows)`
-  animation: ${(props) =>
-    props.open
-      ? css`
-          ${rotateTop} 0.2s ease-out forwards
-        `
-      : css`
-          ${rotateTopClose} 0.2s ease-out forwards
-        `};
+  animation: ${(props) => {
+    if (props.menu === "opened") {
+      return css`
+        ${rotateTop} 0.2s ease-out forwards
+      `;
+    }
+    if (props.menu === "closed") {
+      return css`
+        ${rotateTopClose} 0.2s ease-out forwards
+      `;
+    }
+  }};
 `;
 
 export const MenuStyleMiddle = styled(MenuRows)`
   animation: ${(props) =>
-    props.open &&
+    props.menu === "opened" &&
     css`
       ${fade} 0.2s ease-out forwards
     `};
 `;
 
 export const MenuStyleBottom = styled(MenuRows)`
-  animation: ${(props) =>
-    props.open
-      ? css`
-          ${rotateBottom} 0.2s ease-out forwards
-        `
-      : css`
-          ${rotateBottomClose} 0.2s ease-out forwards
-        `};
+  animation: ${(props) => {
+    if (props.menu === "opened") {
+      return css`
+        ${rotateBottom} 0.2s ease-out forwards
+      `;
+    }
+    if (props.menu === "closed") {
+      return css`
+        ${rotateBottomClose} 0.2s ease-out forwards
+      `;
+    }
+  }};
 `;
 
 const fade = keyframes`

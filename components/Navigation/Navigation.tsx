@@ -11,25 +11,22 @@ import {
 export type Menu = "default" | "opened" | "closed";
 
 const Navigation: NextPage = () => {
-  const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<Menu>("default");
   // console.log(open);
   return (
     <NavStyle
       onClick={() => {
-        if (!open) {
-          setOpen(true);
+        if (menu !== "opened") {
           setMenu("opened");
         }
-        if (open) {
-          setOpen(false);
+        if (menu === "opened") {
           setMenu("closed");
         }
       }}
     >
-      <MenuStyleTop menu={menu} open={open} />
-      <MenuStyleMiddle menu={menu} open={open} />
-      <MenuStyleBottom menu={menu} open={open} />
+      <MenuStyleTop menu={menu} />
+      <MenuStyleMiddle menu={menu} />
+      <MenuStyleBottom menu={menu} />
     </NavStyle>
   );
 };
