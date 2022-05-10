@@ -6,12 +6,20 @@ interface IMenuRows {
 }
 
 export const NavStyle = styled.nav`
+  position: relative;
+  height: 20px;
+  width: 40px;
+`;
+
+export const MenuIcon = styled.div`
   width: 40px;
   height: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  position: absolute;
+  z-index: 1;
 `;
 
 const MenuRows = styled.div<IMenuRows>`
@@ -19,8 +27,7 @@ const MenuRows = styled.div<IMenuRows>`
   height: 3px;
   border-radius: 1px;
   transform-origin: left;
-  background-color: ${(props) =>
-    props.menu === "opened" ? "var(--theme-primary)" : "white"};
+  background-color: white;
 `;
 
 export const MenuStyleTop = styled(MenuRows)`
@@ -72,7 +79,7 @@ const rotateTopClose = keyframes`
 
 const rotateTop = keyframes`
   from{transform: rotate(0deg)}
-  to{transform: rotate(25deg)}`;
+  to{transform: rotate(25deg);background-color: var(--theme-highlight)}`;
 
 const rotateBottomClose = keyframes`
   from{transform: rotate(-25deg)}
@@ -80,4 +87,4 @@ const rotateBottomClose = keyframes`
 
 const rotateBottom = keyframes`
   from{transform: rotate(0deg)}
-  to{transform: rotate(-25deg)}`;
+  to{transform: rotate(-25deg);background-color: var(--theme-highlight)}`;

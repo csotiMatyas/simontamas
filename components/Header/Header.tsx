@@ -2,10 +2,13 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { HeaderStyles, Logo } from "./styles";
 import Navigation from "components/Navigation/Navigation";
-const Header: NextPage = () => {
+import Link from "next/link";
+const Header = () => {
   return (
     <HeaderStyles>
-      <Logo>Simon Tamas</Logo>
+      <Link href="/">
+        <Logo>Simon Tamas</Logo>
+      </Link>
       <Navigation />
     </HeaderStyles>
   );

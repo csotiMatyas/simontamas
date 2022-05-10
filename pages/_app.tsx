@@ -6,7 +6,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --theme-primary: #DDA71B;
+    --theme-highlight: #DDA71B;
+    --theme-background: #111620;
   }
 `;
 

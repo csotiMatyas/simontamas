@@ -1,32 +1,35 @@
-import type { NextPage } from "next";
+import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 import Head from "next/head";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   NavStyle,
   MenuStyleTop,
   MenuStyleBottom,
   MenuStyleMiddle,
+  MenuIcon,
 } from "./styles";
 
-export type Menu = "default" | "opened" | "closed";
+export type Menu = "default" | "opened" | "closed" | "fastClosed";
 
-const Navigation: NextPage = () => {
+function menuControll(state: Menu, setter: Dispatch<SetStateAction<Menu>>) {
+  if (state !== "opened") {
+    setter("opened");
+  }
+  if (state === "opened") {
+    setter("closed");
+  }
+}
+const Navigation = () => {
   const [menu, setMenu] = useState<Menu>("default");
-  // console.log(open);
+
   return (
-    <NavStyle
-      onClick={() => {
-        if (menu !== "opened") {
-          setMenu("opened");
-        }
-        if (menu === "opened") {
-          setMenu("closed");
-        }
-      }}
-    >
-      <MenuStyleTop menu={menu} />
-      <MenuStyleMiddle menu={menu} />
-      <MenuStyleBottom menu={menu} />
+    <NavStyle>
+      <MenuIcon onClick={() => menuControll(menu, setMenu)}>
+        <MenuStyleTop menu={menu} />
+        <MenuStyleMiddle menu={menu} />
+        <MenuStyleBottom menu={menu} />
+      </MenuIcon>
+      <DropdownMenu setMenu={setMenu} menu={menu} />
     </NavStyle>
   );
 };
