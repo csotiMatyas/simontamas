@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const ImageStyle = styled.img`
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   position: absolute;
-  /* transform: translateY(-15%); */
+  object-fit: contain;
+  transform: translateY(-15%);
 `;
 export const Carrousel = styled.div`
   position: absolute;

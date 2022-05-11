@@ -4,6 +4,49 @@ interface IAlbumName {
   previewAlbum: boolean;
 }
 
+interface IPreviewWindow {
+  previewAlbum: boolean;
+}
+
+export const GalleryContainerStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const ImageStyle = styled.img`
+  height: 200px;
+  margin-right: 20px;
+  :last-child {
+    margin-right: 0px;
+  }
+`;
+
+export const PreviewWindow = styled.div<IPreviewWindow>`
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: ${(props) => {
+    if (props.previewAlbum) {
+      return css`
+        ${openPreview} 0.3s linear forwards
+      `;
+    }
+    // if (!props.previewAlbum) {
+    //   return css`
+    //     ${closePreview} 0.3s linear forwards
+    //   `;
+    // }
+  }};
+  width: fit-content;
+  overflow: hidden;
+  height: 210px;
+  display: ${(props) => (props.previewAlbum ? "block" : "none")};
+  margin-bottom: 50px;
+  border: 5px solid var(--theme-highlight);
+  /* @media (max-width: ) {
+    
+  } */
+`;
+
 export const GalleryStyle = styled.main`
   width: 100%;
   height: 100%;
@@ -18,11 +61,16 @@ export const GalleryStyle = styled.main`
 export const AlbumPreviewStyle = styled.div`
   width: fit-content;
   cursor: pointer;
+  margin-bottom: -5px;
 `;
-export const AlbumName = styled.h4<IAlbumName>`
+export const AlbumNameStyle = styled.h4<IAlbumName>`
+  /* width: min-content; */
+  padding: 10px 0;
+  height: min-content;
   position: relative;
-  color: ${(props) =>
-    props.previewAlbum ? "var(--theme-highlight)" : "white"};
+  color: white;
+  /* color: ${(props) =>
+    props.previewAlbum ? "var(--theme-highlight)" : "white"}; */
   font-family: "Space Mono", monospace;
   font-weight: 400;
   letter-spacing: 0.3em;
@@ -51,4 +99,32 @@ export const AlbumName = styled.h4<IAlbumName>`
 const reveal = keyframes`
   70% {opacity: 0}
   100% {opacity: 1}
+`;
+
+const openPreview = keyframes`
+0% {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+90% {
+  opacity: 0.5;
+}
+100% {
+  opacity: 1;
+  visibility: visible
+}
+`;
+
+const closePreview = keyframes`
+0% {
+  opacity: 1;
+  visibility: visible
+}
+10% {
+  opacity: 0.8;
+}
+100% {
+  transform: translateY(20px);
+  opacity: 0;
+}
 `;

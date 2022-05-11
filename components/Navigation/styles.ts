@@ -79,7 +79,7 @@ const rotateTopClose = keyframes`
 
 const rotateTop = keyframes`
   from{transform: rotate(0deg)}
-  to{transform: rotate(25deg);background-color: var(--theme-highlight)}`;
+  to{transform: rotate(35deg) translateY(-4px) ;background-color: var(--theme-highlight)}`;
 
 const rotateBottomClose = keyframes`
   from{transform: rotate(-25deg)}
@@ -87,4 +87,4 @@ const rotateBottomClose = keyframes`
 
 const rotateBottom = keyframes`
   from{transform: rotate(0deg)}
-  to{transform: rotate(-25deg);background-color: var(--theme-highlight)}`;
+  to{transform: rotate(-35deg) translateY(4px); background-color: var(--theme-highlight)}`;

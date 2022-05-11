@@ -39,6 +39,10 @@ export const DropdownMenuStyle = styled.div<IMenuRows>`
 `;
 
 export const MenuLink = styled.p<IMenuLink>`
+  &:after {
+    content: "";
+    margin-left: -0.2rem;
+  }
   cursor: pointer;
   color: ${(props) => (props.selected ? "var(--theme-highlight)" : "white")};
   text-transform: uppercase;
