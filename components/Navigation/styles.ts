@@ -3,6 +3,7 @@ import { Menu } from "./Navigation";
 
 interface IMenuRows {
   menu: Menu;
+  inAlbums: boolean;
 }
 
 export const NavStyle = styled.nav`
@@ -27,7 +28,7 @@ const MenuRows = styled.div<IMenuRows>`
   height: 3px;
   border-radius: 1px;
   transform-origin: left;
-  background-color: white;
+  background-color: ${(props) => (props.inAlbums ? "black" : "white")};
 `;
 
 export const MenuStyleTop = styled(MenuRows)`

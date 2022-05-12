@@ -9,6 +9,10 @@ import {
   MenuIcon,
 } from "./styles";
 
+interface IProps {
+  inAlbums: boolean;
+}
+
 export type Menu = "default" | "opened" | "closed" | "fastClosed";
 
 function menuControll(state: Menu, setter: Dispatch<SetStateAction<Menu>>) {
@@ -19,15 +23,15 @@ function menuControll(state: Menu, setter: Dispatch<SetStateAction<Menu>>) {
     setter("closed");
   }
 }
-const Navigation = () => {
+const Navigation = ({ inAlbums }: IProps) => {
   const [menu, setMenu] = useState<Menu>("default");
 
   return (
     <NavStyle>
       <MenuIcon onClick={() => menuControll(menu, setMenu)}>
-        <MenuStyleTop menu={menu} />
-        <MenuStyleMiddle menu={menu} />
-        <MenuStyleBottom menu={menu} />
+        <MenuStyleTop inAlbums={inAlbums} menu={menu} />
+        <MenuStyleMiddle inAlbums={inAlbums} menu={menu} />
+        <MenuStyleBottom inAlbums={inAlbums} menu={menu} />
       </MenuIcon>
       <DropdownMenu setMenu={setMenu} menu={menu} />
     </NavStyle>

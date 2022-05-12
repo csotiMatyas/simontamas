@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AlbumPreview from "./AlbumPreview";
 import { GalleryStyle, GalleryContainerStyle } from "./styles";
 

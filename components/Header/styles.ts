@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IInAlbum {
+  inAlbums: boolean;
+}
+
 export const HeaderStyles = styled.header`
   position: absolute;
   z-index: 2;
@@ -10,10 +14,10 @@ export const HeaderStyles = styled.header`
   padding: 20px 20px 0px 20px;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.div<IInAlbum>`
   cursor: pointer;
   font-family: "Clash Display", sans-serif;
-  color: white;
+  color: ${(props) => (props.inAlbums ? "black" : "white")};
   font-size: 25px;
   height: 30px;
 `;

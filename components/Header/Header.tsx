@@ -1,15 +1,17 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import { HeaderStyles, Logo } from "./styles";
 import Navigation from "components/Navigation/Navigation";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const Header = () => {
+  const { pathname } = useRouter();
+  const inAlbums = pathname.includes("/gallery/");
+
   return (
     <HeaderStyles>
       <Link href="/">
-        <Logo>Simon Tamas</Logo>
+        <Logo inAlbums={inAlbums}>Simon Tamas</Logo>
       </Link>
-      <Navigation />
+      <Navigation inAlbums={inAlbums} />
     </HeaderStyles>
   );
 };

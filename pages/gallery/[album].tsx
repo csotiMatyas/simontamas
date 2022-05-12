@@ -8,7 +8,6 @@ const Album: NextPage = () => {
   const {
     query: { album },
   } = useRouter();
-  console.log(album);
 
   return (
     <>
@@ -16,9 +15,6 @@ const Album: NextPage = () => {
         <title>Simon Tamás - {album}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <BackgroundFilterStyle>
-        <ImageShowcase />
-      </BackgroundFilterStyle>
     </>
   );
 };
